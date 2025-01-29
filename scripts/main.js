@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => { //empezamos con un DOMCont
                 <div class="task-info">
                     <p class="task-name">${newTask.taskName}</p>
                     <p class="task-definition">${newTask.taskDescription}</p>
-                    <p class="deadline">${formattedDate}</p> //añado la fecha con el formato elegido al nodo
+                    <p class="deadline">${formattedDate}</p> 
                 </div>
             </article>
             `;
