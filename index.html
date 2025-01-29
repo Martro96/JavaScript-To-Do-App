@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
+
+</head>
+
+<body>
+    <div class="task-container">
+        <h1 class="main-title">Gestiona tus tareas</h1>
+        <section class="section1-form">
+            <form id="form">
+                <div class="form-group">
+                  <label for="task">Tarea</label>
+                  <input type="text" id="task" name="task-name" placeholder="Entrega briefing">
+                </div>
+                <div class="form-group">
+                  <label for="task-info">Descripción</label>
+                  <input type="text" id="task-info" name="task-info" placeholder="Desarrollar briefing de la campaña en medios digitales">
+                </div>
+                <div class="form-group">
+                  <label for="deadline">Para cuándo?</label>
+                  <input type="date" name="deadline" id="deadline" placeholder="Fecha">
+                </div>
+                <div class="form-group">
+                  <label for="priority">Prioridad</label>
+                  <select name="priority" id="priority">
+                    <option value="high" >Alta</option>
+                    <option value="medium">Media</option>
+                    <option value="low">Baja</option>
+                  </select>
+                </div>
+                <div class="form-group">
+
+                  <label for="task-status">Estado</label>
+                  <select name="task-status"  id="task-status">
+                      <option value="undone" selected>Sin empezar</option>
+                      <option value="wip">En proceso</option>
+                      <option value="done">Terminada</option>
+                  </select>
+                </div>
+                <button type="submit" id="submitBtn">Añadir tarea</button>
+              </form>
+              
+        </section>
+        <section class="section2">
+            <h2 class="task-list-title">Todas tus tareas</h2>
+             <div class="task-list" id="task-list">
+                <div class="status-card undone-tasks" id="undone-tasks">
+                    <h3>Sin empezar</h3>
+                </div>
+                <div class="status-card wip-tasks" id="wip-tasks">
+                    <h3>En proceso</h3>
+                </div>
+                <div class="status-card done-tasks" id="done-tasks">
+                    <h3>Terminadas</h3>
+                </div> 
+
+            </div>
+        </section>
+    </div>
+
+    <script src="./scripts/main.js"> </script>
+</body>
+
+</html>
