@@ -130,6 +130,7 @@ select[name="priority"] option[value="low"] {
   width: 90%;
   margin: auto;
   align-items: start;
+  padding-bottom: 25px;
 }
 
 
@@ -150,15 +151,24 @@ select[name="priority"] option[value="low"] {
 }
 
 .undone-tasks {
-  background-color: #ff4646c9;
+  background-color: #ff46461c;
+  border-radius: 25px;
+  border: solid #ff4646c9 2px;
+  overflow: hidden;
 }
 
 .wip-tasks {
-  background-color: #e8da5e;
+  background-color: #e8da5e42;
+  border-radius: 25px;
+  border: solid #e8da5e 2px;
+  overflow: hidden;
 }
 
 .done-tasks {
-  background-color: #92b55f;
+  background-color: #93b55f1f;
+  border-radius: 25px;
+  border: solid #92b55f 2px;
+  overflow: hidden;
 }
 
 /*CARDS JS*/
