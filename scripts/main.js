@@ -1,11 +1,15 @@
+import { formatDate } from './utils/date-utils.js';
+
 document.addEventListener('DOMContentLoaded', () => { //empezamos con un DOMContenLoaded para cargar la información lo primero
     let toDoList = []; // Array para almacenar las tareas
+
 
     // Obtenemos referencias de nodos principales
     const form = document.getElementById('form');
     const undoneTasks = document.getElementById('undone-tasks');
     const wipTasks = document.getElementById('wip-tasks');
     const doneTasks = document.getElementById('done-tasks');
+
 
     // Agregar un event listener al formulario
     form.addEventListener('submit', addTask);
@@ -28,6 +32,10 @@ document.addEventListener('DOMContentLoaded', () => { //empezamos con un DOMCont
             return;
         }
 
+        // Formateamos la fecha usando date-fns
+        const formattedDate = formatDate(newTask.deadline); 
+
+
         // Creamos un nuevo nodo para generar la card de la tarea
         const taskCard = document.createElement('article');
         //A este nodo le añadimos la clase general para poder darle estilo
@@ -38,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => { //empezamos con un DOMCont
                 <div class="task-info">
                     <p class="task-name">${newTask.taskName}</p>
                     <p class="task-definition">${newTask.taskDescription}</p>
-                    <p class="deadline">${newTask.deadline}</p>
+                    <p class="deadline">${formattedDate}</p> //añado la fecha con el formato elegido al nodo
                 </div>
             </article>
             `;
