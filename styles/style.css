@@ -188,6 +188,7 @@ select[name="priority"] option[value="low"] {
 .task-card:hover {
   transform: scale(1.03);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .task-info {

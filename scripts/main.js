@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => { //empezamos con un DOMCont
         const taskCard = document.createElement('article');
         //A este nodo le añadimos la clase general para poder darle estilo
         taskCard.classList.add('task-card');
+        taskCard.setAttribute('draggable', 'true'); //Añadimos el evento de drag al nodo
         taskCard.innerHTML = //Creamos la estructura del nodo generado
             `
             <article>
@@ -50,6 +51,16 @@ document.addEventListener('DOMContentLoaded', () => { //empezamos con un DOMCont
                 </div>
             </article>
             `;
+
+         // Asignar eventos de "drag" a la tarjeta de la tarea
+         taskCard.addEventListener("dragstart", (event) => {
+            event.dataTransfer.setData("text/plain", newTask.taskName); // Guardamos el nombre de la tarea
+            event.target.classList.add("dragging");
+        });
+
+        taskCard.addEventListener("dragend", (event) => {
+            event.target.classList.remove("dragging");
+        });
 
         // Creamos la constante statusColumns para asignar la tarea a la columna correspondiente según el estado
         const statusColumns = {
@@ -79,4 +90,31 @@ document.addEventListener('DOMContentLoaded', () => { //empezamos con un DOMCont
         document.getElementById('priority').value = '';
         document.getElementById('task-status').value = 'undone';
     }
+
+    //Constante para el evento de drop 
+
+    const statusColumns = [undoneTasks, wipTasks, doneTasks];
+
+    statusColumns.forEach(column => {
+        column.addEventListener("dragover", (event) => {
+            event.preventDefault(); //Permitimos el drop
+        });
+        column.addEventListener("drop", (event) => {
+            event.preventDefault(); //Permitimos el drop
+            const draggingTask = document.querySelector(".dragging");
+            if(draggingTask) {
+                event.target.appendChild(draggingTask);
+
+                const taskName = draggingTask.querySelector('.task-name').textContent;
+                const updatedTask = toDoList.find(task => task.taskName === taskName);
+                if (updatedTask) {
+                    updatedTask.taskStatus = event.target.id; // Cambia el estado según la columna de destino
+                    console.log(`Tarea "${taskName}" movida a ${updatedTask.taskStatus}`);
+                }
+
+            }
+        });
+    })
+
+
 });
